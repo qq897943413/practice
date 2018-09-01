@@ -6,6 +6,6 @@ public class Node {
     Node leftChild;
     Node rightChild;
     public void displayNode(){
-        System.out.println(iDate);
+        System.out.println(fDate);
     }
 }
