@@ -1,8 +1,55 @@
 package com.hanfang.tree;
 
 public class Tree {
-    private Node root;
-    public void find(int key){}
+    public Node root;
+    //中序遍历
+    public void inOrder(Node localRoot){
+        if(localRoot!=null){
+            inOrder(localRoot.leftChild);
+            System.out.print(localRoot.iDate+",");
+            inOrder(localRoot.rightChild);
+        }
+    }
+    public Node find(int key){
+        Node current=root;
+        while(current.iDate!=key){
+            if(key<current.iDate){
+                current=current.leftChild;
+            }else {
+                current=current.rightChild;
+            }
+            if(current==null){
+                return null;
+            }
+        }
+        return current;
+    }
     public void delete(int key){}
-    private void insert(int key,double dd){}
+    public void insert(int key,double dd){
+        Node node=new Node();
+        node.iDate=key;
+        node.fDate=dd;
+        if(root==null){
+            root=node;
+        }else {
+            Node current=root;
+            Node parent;
+            while(true){
+                parent=current;
+                if(key<current.iDate){
+                    current=current.leftChild;
+                    if(current==null){
+                        parent.leftChild=node;
+                        return;
+                    }
+                }else {
+                    current=current.rightChild;
+                    if(current==null){
+                        parent.rightChild=node;
+                        return;
+                    }
+                }
+            }
+        }
+    }
 }
