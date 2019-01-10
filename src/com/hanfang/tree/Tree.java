@@ -2,6 +2,25 @@ package com.hanfang.tree;
 
 public class Tree {
     public Node root;
+
+    public Node minNode(){
+        Node current=root;
+        Node last=null;
+        while(current!=null){
+            last=current;
+            current=current.leftChild;
+        }
+        return last;
+    }
+    public Node maxNode(){
+        Node current=root;
+        Node last=null;
+        while(current!=null){
+            last=current;
+            current=current.rightChild;
+        }
+        return last;
+    }
     //中序遍历
     public void inOrder(Node localRoot){
         if(localRoot!=null){
